@@ -1,5 +1,6 @@
-const el = document.querySelector<HTMLCanvasElement>('#canvas')!
-const app = el.getContext('2d')!
+import './style.css'
+// const el = document.querySelector<HTMLCanvasElement>('#canvas')!
+// const app = el.getContext('2d')!
 
 // app.fillStyle = '#000'
 // app.fillRect(0, 0, 300, 300)
@@ -51,5 +52,84 @@ const app = el.getContext('2d')!
 // app.textBaseline = 'top'
 // app.strokeText('Tank-Game', 50, 0)
 
-// 图片贴图的使用
+// 图片贴图使用
+// const img = document.createElement('img')
+// img.src = '../images/965225f1apcdf02c8d85c7993cd87a5d.JPG'
+// img.onload = () => {
+//   const pattern = app.createPattern(img, 'repeat')!
+//   app.fillStyle = pattern
+//   app.fillRect(0, 0, 300, 300)
+// }
 
+// 绘制图片
+// app.fillStyle = '#000'
+// app.fillRect(0, 0, el.width, el.height)
+// const img = document.createElement('img')
+// img.src = '../images/965225f1apcdf02c8d85c7993cd87a5d.JPG'
+// img.onload = () => {
+//   const ratio = scale(img, el)
+//   el.width = img.naturalWidth * ratio
+//   el.height = img.naturalHeight * ratio
+//   app.drawImage(img, 0, 0, el.width, el.height)
+// }
+
+// function scale(img: HTMLImageElement, el: HTMLCanvasElement) {
+//   return Math.min(el.width / img.naturalWidth, el.height / img.naturalHeight)
+// }
+
+// 绘制随机色块
+// app.fillStyle = '#000'
+// app.rect(0, 0, 300, 300)
+
+// // for (let i = 0; i < 2000; i++) {
+// //   app.fillStyle = 'white'
+// //   app.fillRect(Math.random() * el.width, Math.random() * el.height, 5, 5)
+// // }
+
+// for (let i = 0; i < 20; i++) {
+//   app.beginPath()
+//   app.fillStyle = ['#1abc9c', '#27ae60', '#2980b9', '#8e44ad', '#e67e22', '#e74c3c'].sort(() => (Math.floor(Math.random() * 2) ? 1 : -1))[0]
+//   app.arc(Math.random() * el.width, Math.random() * el.height, 5 + Math.random() * 10, 0, 2 * Math.PI)
+//   app.fill()
+// }
+
+// 创建黑板画布
+class Blackboard {
+  private height: number
+  private width: number
+  public el: HTMLCanvasElement
+  private app: CanvasRenderingContext2D
+  constructor() {
+    this.el = document.querySelector<HTMLCanvasElement>('#canvas')!
+    this.height = this.el.height
+    this.width = this.el.width
+    this.app = this.el.getContext('2d')!
+    this.initCanvas()
+    this.bindEvent()
+  }
+
+  private bindEvent() {
+    const drawLineCb = this.drawLine.bind(this)
+    this.el.addEventListener('mousedown', () => {
+      this.app.beginPath()
+      this.app.strokeStyle = '#fff'
+      this.el.addEventListener('mousemove', drawLineCb)
+
+      document.addEventListener('mouseup', () => {
+        this.el.removeEventListener('mousemove', drawLineCb)
+      })
+    })
+  }
+
+  private drawLine(e: MouseEvent) {
+    this.app.lineTo(e.offsetX, e.offsetY)
+    this.app.stroke()
+  }
+
+  private initCanvas() {
+    this.app.fillStyle = '#000'
+    this.app.fillRect(0, 0, this.width, this.height)
+  }
+}
+
+const instance = new Blackboard()
