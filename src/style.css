@@ -3,6 +3,22 @@ body {
   height: 100vh;
   background-color: #34495e;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.color-container {
+  display: flex;
+}
+
+.btns {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.img-short {
+  width: 300px;
+  margin-top: 10px;
 }
