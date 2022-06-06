@@ -1,5 +1,5 @@
 import './style.scss'
-import config from '../config'
+import config from './config'
 import './canvas/straw'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
