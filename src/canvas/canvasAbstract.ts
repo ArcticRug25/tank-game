@@ -1,5 +1,4 @@
 import config from '../config'
-import strawImgUrl from '../static/images/straw/straw.png'
 
 export default abstract class CanvasAbstract {
   protected items = []
@@ -20,13 +19,13 @@ export default abstract class CanvasAbstract {
   }
 
   protected drawModels() {
-    const img = document.createElement('img')
-    img.src = strawImgUrl
-    // 图片加载是异步的，需要等加载完成再渲染
-    img.addEventListener('load', () => {
-      const position = this.position()
-      this.canvas.drawImage(img, position.x, position.y, config.model.width, config.model.height)
-    })
+    // const img = document.createElement('img')
+    // img.src = strawImgUrl
+    // // 图片加载是异步的，需要等加载完成再渲染
+    // img.addEventListener('load', () => {
+    //   const position = this.position()
+    //   this.canvas.drawImage(img, position.x, position.y, config.model.width, config.model.height)
+    // })
   }
 
   protected position() {
