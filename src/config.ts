@@ -2,8 +2,8 @@ import strawImgUrl from './static/images/straw/straw.png'
 
 export default {
   canvas: {
-    width: 500,
-    height: 500,
+    width: 900,
+    height: 600,
   },
   straw: {
     num: 20,
