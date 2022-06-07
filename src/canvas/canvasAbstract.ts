@@ -2,13 +2,13 @@ import config from '../config'
 
 export default abstract class CanvasAbstract {
   protected items = []
+  abstract render(): void
   constructor(
     protected app = document.querySelector<HTMLDivElement>('#app')!,
     protected el = document.createElement('canvas'),
     protected canvas = el.getContext('2d')!,
   ) {
     this.createCanvas()
-    this.drawModels()
   }
 
   protected createCanvas() {
@@ -18,20 +18,33 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement('afterbegin', this.el)
   }
 
-  protected drawModels() {
-    // const img = document.createElement('img')
-    // img.src = strawImgUrl
-    // // 图片加载是异步的，需要等加载完成再渲染
-    // img.addEventListener('load', () => {
-    //   const position = this.position()
-    //   this.canvas.drawImage(img, position.x, position.y, config.model.width, config.model.height)
-    // })
+  protected drawModels(num: number, Model: ModelConstructor) {
+    this.positionCollection(num).forEach((position) => {
+      const instance = new Model(this.canvas, position.x, position.y)
+      instance.render()
+    })
+  }
+
+  // 批量获取唯一坐标
+  protected positionCollection(num: number) {
+    const collection = [] as { x: number; y: number }[]
+    for (let i = 0; i < num; i++) {
+      while (true) {
+        const position = this.position()
+        const exists = collection.some(item => item.x === position.x && item.y === position.y)
+        if (!exists) {
+          collection.push(position)
+          break
+        }
+      }
+    }
+    return collection
   }
 
   protected position() {
     return {
-      x: 20,
-      y: 30,
+      x: Math.floor(Math.random() * (config.canvas.width / config.model.width)) * config.model.width,
+      y: Math.floor(Math.random() * (config.canvas.height / config.model.height)) * config.model.height,
     }
   }
 }

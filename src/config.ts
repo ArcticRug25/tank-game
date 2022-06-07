@@ -5,6 +5,9 @@ export default {
     width: 500,
     height: 500,
   },
+  straw: {
+    num: 20,
+  },
   model: {
     width: 30,
     height: 30,
