@@ -3,6 +3,7 @@ import './style.scss'
 import config from './config'
 import straw from './canvas/straw'
 import wall from './canvas/wall'
+import water from './canvas/water'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 app.style.width = `${config.canvas.width}px`
@@ -12,6 +13,7 @@ async function bootStrap() {
   await Promise.all(imgPromises)
   straw.render()
   wall.render()
+  water.render()
 }
 
 bootStrap()
