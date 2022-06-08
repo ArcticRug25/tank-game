@@ -1,4 +1,5 @@
 import strawImgUrl from './static/images/straw/straw.png'
+import wallImgUrl from './static/images/wall/wall.gif'
 
 export default {
   canvas: {
@@ -8,13 +9,15 @@ export default {
   straw: {
     num: 20,
   },
+  wall: {
+    num: 20,
+  },
   model: {
     width: 30,
     height: 30,
   },
   images: {
     straw: strawImgUrl,
-    tank: strawImgUrl,
-    wall: strawImgUrl,
+    wall: wallImgUrl,
   },
 }

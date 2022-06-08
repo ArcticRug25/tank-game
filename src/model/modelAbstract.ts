@@ -1,5 +1,4 @@
 import config from '../config'
-import { image } from '../service/image'
 
 export default abstract class ModelAbstract {
   abstract render(): void
@@ -9,7 +8,7 @@ export default abstract class ModelAbstract {
     protected y: number,
   ) {}
 
-  protected draw() {
-    this.canvas.drawImage(image.get('straw')!, this.x, this.y, config.model.width, config.model.height)
+  protected draw(img: HTMLImageElement) {
+    this.canvas.drawImage(img, this.x, this.y, config.model.width, config.model.height)
   }
 }
