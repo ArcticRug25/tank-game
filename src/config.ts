@@ -1,6 +1,7 @@
 import strawImgUrl from './static/images/straw/straw.png'
 import wallImgUrl from './static/images/wall/wall.gif'
 import waterImgUrl from './static/images/water/water.gif'
+import steelImgUrl from './static/images/wall/steels.gif'
 
 export default {
   canvas: {
@@ -8,13 +9,16 @@ export default {
     height: 600,
   },
   straw: {
-    num: 20,
+    num: 120,
   },
   wall: {
-    num: 20,
+    num: 80,
   },
   water: {
-    num: 10,
+    num: 60,
+  },
+  steel: {
+    num: 20,
   },
   model: {
     width: 30,
@@ -24,5 +28,6 @@ export default {
     straw: strawImgUrl,
     wall: wallImgUrl,
     water: waterImgUrl,
+    steel: steelImgUrl,
   },
 }
