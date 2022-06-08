@@ -2,6 +2,7 @@ import config from '../config'
 import Position from '../service/position'
 
 export default abstract class CanvasAbstract {
+  protected models: IModel[] = []
   protected items = []
   abstract render(): void
   constructor(
@@ -12,6 +13,7 @@ export default abstract class CanvasAbstract {
     this.createCanvas()
   }
 
+  // 创建画布
   protected createCanvas() {
     this.el.width = config.canvas.width
     this.el.height = config.canvas.height
@@ -19,10 +21,16 @@ export default abstract class CanvasAbstract {
     this.app.insertAdjacentElement('afterbegin', this.el)
   }
 
-  protected drawModels(num: number, Model: ModelConstructor) {
+  // 生成模型实例
+  protected createModels(num: number, Model: ModelConstructor) {
     Position.getCollection(num).forEach((position) => {
       const instance = new Model(this.canvas, position.x, position.y)
-      instance.render()
+      this.models.push(instance)
     })
+  }
+
+  // 渲染模型到画布
+  protected renderModels() {
+    this.models.forEach(model => model.render())
   }
 }
