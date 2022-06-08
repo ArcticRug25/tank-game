@@ -3,12 +3,16 @@ import WaterModel from '../model/waterModel'
 import CanvasAbstract from './canvasAbstract'
 
 class Water extends CanvasAbstract {
-  constructor() {
-    super()
-    super.createModels(config.straw.num, WaterModel)
+  num(): number {
+    return config.water.num
+  }
+
+  Model(): ModelConstructor {
+    return WaterModel
   }
 
   render(): void {
+    super.createModels()
     super.renderModels()
   }
 }

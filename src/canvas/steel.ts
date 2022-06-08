@@ -3,12 +3,16 @@ import SteelModel from '../model/steelModel'
 import CanvasAbstract from './canvasAbstract'
 
 class Steel extends CanvasAbstract {
-  constructor() {
-    super()
-    super.createModels(config.straw.num, SteelModel)
+  num(): number {
+    return config.steel.num
+  }
+
+  Model(): ModelConstructor {
+    return SteelModel
   }
 
   render(): void {
+    super.createModels()
     super.renderModels()
   }
 }

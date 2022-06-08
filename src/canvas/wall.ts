@@ -3,12 +3,16 @@ import WallModel from '../model/wallModel'
 import CanvasAbstract from './canvasAbstract'
 
 class Wall extends CanvasAbstract {
-  constructor() {
-    super()
-    super.createModels(config.straw.num, WallModel)
+  num(): number {
+    return config.wall.num
+  }
+
+  Model(): ModelConstructor {
+    return WallModel
   }
 
   render(): void {
+    super.createModels()
     super.renderModels()
   }
 }
