@@ -1,6 +1,6 @@
 import config from '../config'
 
-type imgMapKey = keyof typeof config.images
+export type imgMapKey = keyof typeof config.images
 
 export const image = new Map<imgMapKey, HTMLImageElement>()
 
