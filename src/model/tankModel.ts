@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import config from '../config'
 import type { imgMapKey } from '../service/image'
 import { image } from '../service/image'
 import { directionEnum } from './../types/directionEnum'
@@ -10,6 +11,29 @@ export default class TankModel extends ModelAbstract implements IModel {
   render(): void {
     this.randomDirection()
     super.draw(this.randomImage())
+
+    // setInterval(() => {
+    //   this.move()
+    // }, 50)
+  }
+
+  protected move() {
+    this.canvas.clearRect(this.x, this.y, config.model.width, config.model.height)
+    switch (this.direction) {
+      case directionEnum.TOP:
+        this.y += 2
+        break
+      case directionEnum.RIGHT:
+        this.x += 2
+        break
+      case directionEnum.BOTTOM:
+        this.y -= 2
+        break
+      case directionEnum.LEFT:
+        this.x -= 2
+        break
+    }
+    this.draw(this.randomImage())
   }
 
   // 随机产生方向
