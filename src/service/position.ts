@@ -10,7 +10,7 @@ class Position {
     for (let i = 0; i < num; i++) {
       while (true) {
         const position = this.position()
-        const exists = collection.some(item => item.x === position.x && item.y === position.y)
+        const exists = this.collection.some(item => item.x === position.x && item.y === position.y)
         if (!exists) {
           collection.push(position)
           this.collection.push(position)

@@ -2,7 +2,7 @@ import config from '../config'
 import SteelModel from '../model/steelModel'
 import CanvasAbstract from './canvasAbstract'
 
-class Steel extends CanvasAbstract {
+class Steel extends CanvasAbstract implements ICanvas {
   num(): number {
     return config.steel.num
   }
