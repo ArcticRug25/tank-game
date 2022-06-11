@@ -2,7 +2,10 @@ import strawImgUrl from './static/images/straw/straw.png'
 import wallImgUrl from './static/images/wall/wall.gif'
 import waterImgUrl from './static/images/water/water.gif'
 import steelImgUrl from './static/images/wall/steels.gif'
-import tankImgUrl from './static/images/tank/left.gif'
+import tankTopImgUrl from './static/images/tank/top.gif'
+import tankBottomImgUrl from './static/images/tank/bottom.gif'
+import tankLeftImgUrl from './static/images/tank/left.gif'
+import tankRightImgUrl from './static/images/tank/right.gif'
 
 export default {
   canvas: {
@@ -33,6 +36,9 @@ export default {
     wall: wallImgUrl,
     water: waterImgUrl,
     steel: steelImgUrl,
-    tank: tankImgUrl,
+    tankTop: tankTopImgUrl,
+    tankBottom: tankBottomImgUrl,
+    tankLeft: tankLeftImgUrl,
+    tankRight: tankRightImgUrl,
   },
 }
