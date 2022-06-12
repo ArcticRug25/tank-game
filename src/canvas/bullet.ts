@@ -14,4 +14,4 @@ export default new class Bullet extends CanvasAbstract implements ICanvas {
     super.createModels()
     super.renderModels()
   }
-}()
+}('bullet')
