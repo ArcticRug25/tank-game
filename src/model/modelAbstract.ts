@@ -16,4 +16,8 @@ export default abstract class ModelAbstract {
   protected draw() {
     this.canvas.ctx.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height)
   }
+
+  protected destory() {
+    this.canvas.removeModel(this)
+  }
 }

@@ -38,4 +38,8 @@ export default abstract class CanvasAbstract {
   protected renderModels() {
     this.models.forEach(model => model.render())
   }
+
+  public removeModel(model: IModel) {
+    this.models = this.models.filter(m => m !== model)
+  }
 }

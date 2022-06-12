@@ -2,6 +2,7 @@ import bullet from '../canvas/bullet'
 import config from '../config'
 import { image } from '../service/image'
 import { directionEnum } from '../types/directionEnum'
+import { isCanvasTouch } from '../utils'
 import ModelAbstract from './modelAbstract'
 
 export default class bulletModel extends ModelAbstract implements IModel {
@@ -31,10 +32,14 @@ export default class bulletModel extends ModelAbstract implements IModel {
         break
     }
     // 碰撞检测
-    this.x = x
-    this.y = y
-
-    this.draw()
+    if (isCanvasTouch(x, y, 2, 2)) {
+      this.destory()
+    }
+    else {
+      this.x = x
+      this.y = y
+      this.draw()
+    }
   }
 
   image(): HTMLImageElement {
