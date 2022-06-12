@@ -24,18 +24,20 @@ export default class TankModel extends ModelAbstract implements IModel {
   protected move() {
     switch (this.direction) {
       case directionEnum.TOP:
-        this.y -= 2
+        this.y--
         break
       case directionEnum.RIGHT:
-        this.x += 2
+        this.x++
         break
       case directionEnum.BOTTOM:
-        this.y += 2
+        this.y++
         break
       case directionEnum.LEFT:
-        this.x -= 2
+        this.x--
         break
     }
+
+    super.draw()
   }
 
   image() {

@@ -8,6 +8,7 @@ import tankLeftImgUrl from './static/images/tank/left.gif'
 import tankRightImgUrl from './static/images/tank/right.gif'
 
 export default {
+  tankMoveTime: 50,
   canvas: {
     width: 900,
     height: 600,

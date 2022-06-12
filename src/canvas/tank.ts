@@ -18,7 +18,7 @@ export class Tank extends CanvasAbstract implements ICanvas {
 
     setInterval(() => {
       this.renderModels()
-    }, 50)
+    }, config.tankMoveTime)
   }
 
   protected createModels(): void {
@@ -32,10 +32,7 @@ export class Tank extends CanvasAbstract implements ICanvas {
 
   protected renderModels(): void {
     this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
-    this.models.forEach((model) => {
-      model.render()
-      this.canvas.drawImage(model.image(), model.x, model.y, config.model.width, config.model.height)
-    })
+    super.renderModels()
   }
 }
 
