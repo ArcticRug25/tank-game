@@ -1,10 +1,10 @@
-import bullets from '../canvas/bullets'
+import bullet from '../canvas/bullet'
 import { image } from '../service/image'
 import ModelAbstract from './modelAbstract'
 
-export default class bulletsModel extends ModelAbstract implements IModel {
-  public canvas: ICanvas = bullets
-  name = 'bullets'
+export default class bulletModel extends ModelAbstract implements IModel {
+  public canvas: ICanvas = bullet
+  name = 'bullet'
   render(): void {
     super.draw()
   }

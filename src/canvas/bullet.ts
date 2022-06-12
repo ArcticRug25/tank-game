@@ -1,13 +1,13 @@
-import bulletsModel from '../model/bulletsModel'
+import bulletModel from '../model/bulletModel'
 import CanvasAbstract from './canvasAbstract'
 
-export default new class Bullets extends CanvasAbstract implements ICanvas {
+export default new class Bullet extends CanvasAbstract implements ICanvas {
   num(): number {
     return 0
   }
 
   Model(): ModelConstructor {
-    return bulletsModel
+    return bulletModel
   }
 
   render(): void {
