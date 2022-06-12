@@ -9,7 +9,7 @@ export default abstract class CanvasAbstract {
   constructor(
     protected app = document.querySelector<HTMLDivElement>('#app')!,
     protected el = document.createElement('canvas'),
-    protected canvas = el.getContext('2d')!,
+    public ctx = el.getContext('2d')!,
   ) {
     this.createCanvas()
   }
@@ -26,7 +26,7 @@ export default abstract class CanvasAbstract {
   protected createModels() {
     Position.getCollection(this.num()).forEach((position) => {
       const Model = this.Model()
-      const instance = new Model(this.canvas, position.x, position.y)
+      const instance = new Model(position.x, position.y)
       this.models.push(instance)
     })
   }

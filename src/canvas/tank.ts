@@ -25,13 +25,13 @@ export class Tank extends CanvasAbstract implements ICanvas {
     for (let i = 0; i < this.num(); i++) {
       const pos = position.position()
       const TankModel = this.Model()
-      const tankInstance = new TankModel(this.canvas, pos.x, 0)
+      const tankInstance = new TankModel(pos.x, 0)
       this.models.push(tankInstance)
     }
   }
 
   protected renderModels(): void {
-    this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
     super.renderModels()
   }
 }

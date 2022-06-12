@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import steel from '../canvas/steel'
+import tank from '../canvas/tank'
 import wall from '../canvas/wall'
 import water from '../canvas/water'
 import config from '../config'
@@ -9,15 +10,15 @@ import { directionEnum } from './../types/directionEnum'
 import ModelAbstract from './modelAbstract'
 
 export default class TankModel extends ModelAbstract implements IModel {
+  public canvas: ICanvas = tank
   name = 'tank'
   protected direction: directionEnum = directionEnum.BOTTOM
 
   constructor(
-    protected canvas: CanvasRenderingContext2D,
     public x: number,
     public y: number,
   ) {
-    super(canvas, x, y)
+    super(x, y)
     this.randomDirection()
   }
 
