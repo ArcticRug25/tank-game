@@ -4,6 +4,8 @@ export default abstract class ModelAbstract {
   abstract name: string
   abstract render(): void
   abstract image(): HTMLImageElement
+  protected width = config.model.width
+  protected height = config.model.height
 
   constructor(
     protected canvas: CanvasRenderingContext2D,

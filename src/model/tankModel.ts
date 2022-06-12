@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import config from '../config'
 import type { imgMapKey } from '../service/image'
 import { image } from '../service/image'
 import { directionEnum } from './../types/directionEnum'
@@ -22,22 +23,41 @@ export default class TankModel extends ModelAbstract implements IModel {
   }
 
   protected move() {
-    switch (this.direction) {
-      case directionEnum.TOP:
-        this.y--
-        break
-      case directionEnum.RIGHT:
-        this.x++
-        break
-      case directionEnum.BOTTOM:
-        this.y++
-        break
-      case directionEnum.LEFT:
-        this.x--
-        break
-    }
+    while (true) {
+      let x = this.x
+      let y = this.y
+      switch (this.direction) {
+        case directionEnum.TOP:
+          y--
+          break
+        case directionEnum.RIGHT:
+          x++
+          break
+        case directionEnum.BOTTOM:
+          y++
+          break
+        case directionEnum.LEFT:
+          x--
+          break
+      }
 
+      if (this.isTouch(x, y)) {
+        this.randomDirection()
+      }
+      else {
+        this.x = x
+        this.y = y
+        break
+      }
+    }
     super.draw()
+  }
+
+  // 碰撞检测
+  protected isTouch(x: number, y: number): boolean {
+    if (x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height)
+      return true
+    return false
   }
 
   image() {

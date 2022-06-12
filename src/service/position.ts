@@ -1,6 +1,6 @@
 import config from '../config'
 
-interface positionType { x: number; y: number }
+export interface positionType { x: number; y: number }
 
 class Position {
   collection: positionType[] = []
