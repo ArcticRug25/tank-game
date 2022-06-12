@@ -1,3 +1,4 @@
+import config from '../config'
 import BulletModel from '../model/bulletModel'
 import CanvasAbstract from './canvasAbstract'
 import tank from './tank'
@@ -12,12 +13,9 @@ export default new class Bullet extends CanvasAbstract implements ICanvas {
   }
 
   render(): void {
-    // super.createModels()
-    // super.renderModels()
-
-    setTimeout(() => {
+    setInterval(() => {
       this.createBullet()
-      super.renderModels()
+      this.renderModels()
     }, 100)
   }
 
@@ -27,5 +25,10 @@ export default new class Bullet extends CanvasAbstract implements ICanvas {
       if (!isExists)
         this.models.push(new BulletModel(tank))
     })
+  }
+
+  protected renderModels(): void {
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
+    super.renderModels()
   }
 }('bullet')
