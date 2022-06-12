@@ -1,4 +1,7 @@
 import _ from 'lodash'
+import steel from '../canvas/steel'
+import wall from '../canvas/wall'
+import water from '../canvas/water'
 import config from '../config'
 import type { imgMapKey } from '../service/image'
 import { image } from '../service/image'
@@ -57,7 +60,17 @@ export default class TankModel extends ModelAbstract implements IModel {
   protected isTouch(x: number, y: number): boolean {
     if (x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height)
       return true
-    return false
+
+    const untouchableModels = [...water.models, ...wall.models, ...steel.models]
+    return untouchableModels.some((model) => {
+      const state
+        = x + this.width <= model.x
+        || x >= model.x + model.width
+        || y + this.height <= model.y
+        || y >= model.y + model.height
+
+      return !state
+    })
   }
 
   image() {
