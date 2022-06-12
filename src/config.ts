@@ -34,8 +34,8 @@ export default {
     num: 20,
   },
   bullet: {
-    width: 5,
-    height: 5,
+    width: 3,
+    height: 3,
   },
   images: {
     straw: strawImgUrl,

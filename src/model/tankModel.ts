@@ -1,11 +1,8 @@
 import _ from 'lodash'
-import steel from '../canvas/steel'
 import tank from '../canvas/tank'
-import wall from '../canvas/wall'
-import water from '../canvas/water'
-import config from '../config'
 import type { imgMapKey } from '../service/image'
 import { image } from '../service/image'
+import { isTouch } from '../utils'
 import { directionEnum } from './../types/directionEnum'
 import ModelAbstract from './modelAbstract'
 
@@ -48,7 +45,7 @@ export default class TankModel extends ModelAbstract implements IModel {
           break
       }
 
-      if (this.isTouch(x, y)) {
+      if (isTouch(x, y)) {
         this.randomDirection()
       }
       else {
@@ -58,23 +55,6 @@ export default class TankModel extends ModelAbstract implements IModel {
       }
     }
     super.draw()
-  }
-
-  // 碰撞检测
-  protected isTouch(x: number, y: number): boolean {
-    if (x < 0 || x + this.width > config.canvas.width || y < 0 || y + this.height > config.canvas.height)
-      return true
-
-    const untouchableModels = [...water.models, ...wall.models, ...steel.models]
-    return untouchableModels.some((model) => {
-      const state
-        = x + this.width <= model.x
-        || x >= model.x + model.width
-        || y + this.height <= model.y
-        || y >= model.y + model.height
-
-      return !state
-    })
   }
 
   image() {
