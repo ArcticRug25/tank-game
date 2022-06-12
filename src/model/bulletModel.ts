@@ -38,7 +38,9 @@ export default class bulletModel extends ModelAbstract implements IModel {
     }
     else if (touchModel) {
       this.destroy()
-      touchModel.destroy()
+      if (touchModel.name !== 'steel')
+        touchModel.destroy()
+      this.blast(touchModel)
     }
     else {
       this.x = x

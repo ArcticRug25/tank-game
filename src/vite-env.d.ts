@@ -18,6 +18,7 @@ interface IModel {
   tank?: IModel
   direction?: string
   destroy(): void
+  name: string
 }
 
 interface ICanvas {
