@@ -23,6 +23,9 @@ export default class TankModel extends ModelAbstract implements IModel {
 
   render(): void {
     this.move()
+    // Math.floor(Math.random() * 5) === 1
+    if (_.random(20) === 1)
+      this.direction = directionEnum.BOTTOM
   }
 
   protected move() {
