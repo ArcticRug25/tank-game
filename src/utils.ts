@@ -1,20 +1,15 @@
 import steel from './canvas/steel'
 import wall from './canvas/wall'
-import water from './canvas/water'
 import config from './config'
 
-export function isTouch(
+export function isModelTouch(
   x: number,
   y: number,
   width = config.model.width,
   height = config.model.height,
-  untouchableModels = [...water.models, ...wall.models, ...steel.models],
-): boolean {
-  const isTouchCanvas = isCanvasTouch(x, y)
-  if (isTouchCanvas)
-    return true
-
-  return untouchableModels.some((model) => {
+  untouchableModels = [...wall.models, ...steel.models],
+): IModel | undefined {
+  return untouchableModels.find((model) => {
     const state
       = x + width <= model.x
       || x >= model.x + model.width

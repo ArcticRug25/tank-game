@@ -17,6 +17,7 @@ interface IModel {
   image(): HTMLImageElement
   tank?: IModel
   direction?: string
+  destroy(): void
 }
 
 interface ICanvas {
@@ -24,4 +25,6 @@ interface ICanvas {
   num(): number
   ctx: CanvasRenderingContext2D
   removeModel(model: IModel): void
+  renderModels(): void
+  clearRect(): void
 }

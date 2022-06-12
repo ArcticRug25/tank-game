@@ -2,7 +2,7 @@ import _ from 'lodash'
 import tank from '../canvas/tank'
 import type { imgMapKey } from '../service/image'
 import { image } from '../service/image'
-import { isTouch } from '../utils'
+import { isCanvasTouch, isModelTouch } from '../utils'
 import { directionEnum } from './../types/directionEnum'
 import ModelAbstract from './modelAbstract'
 
@@ -45,7 +45,7 @@ export default class TankModel extends ModelAbstract implements IModel {
           break
       }
 
-      if (isTouch(x, y)) {
+      if (isModelTouch(x, y) || isCanvasTouch(x, y)) {
         this.randomDirection()
       }
       else {

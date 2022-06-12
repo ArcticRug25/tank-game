@@ -30,7 +30,7 @@ export default new class Tank extends CanvasAbstract implements ICanvas {
     }
   }
 
-  protected renderModels(): void {
+  public renderModels(): void {
     this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height)
     super.renderModels()
   }
