@@ -12,7 +12,7 @@ import ModelAbstract from './modelAbstract'
 export default class TankModel extends ModelAbstract implements IModel {
   public canvas: ICanvas = tank
   name = 'tank'
-  protected direction: directionEnum = directionEnum.BOTTOM
+  public direction: directionEnum = directionEnum.BOTTOM
 
   constructor(
     public x: number,

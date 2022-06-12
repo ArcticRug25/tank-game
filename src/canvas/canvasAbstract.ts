@@ -4,7 +4,7 @@ import Position from '../service/position'
 export default abstract class CanvasAbstract {
   public models: IModel[] = []
   abstract num(): number
-  abstract Model(): ModelConstructor
+  abstract Model(): ModelConstructor | BulletModelConstructor
   abstract render(): void
   constructor(
     protected name: string,
@@ -28,7 +28,7 @@ export default abstract class CanvasAbstract {
   // 生成模型实例
   protected createModels() {
     Position.getCollection(this.num()).forEach((position) => {
-      const Model = this.Model()
+      const Model = this.Model() as ModelConstructor
       const instance = new Model(position.x, position.y)
       this.models.push(instance)
     })

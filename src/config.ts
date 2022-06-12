@@ -33,6 +33,10 @@ export default {
   tank: {
     num: 20,
   },
+  bullet: {
+    width: 5,
+    height: 5,
+  },
   images: {
     straw: strawImgUrl,
     wall: wallImgUrl,
