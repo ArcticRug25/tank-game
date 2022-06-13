@@ -7,6 +7,7 @@ import tankBottomImgUrl from './static/images/tank/bottom.gif'
 import tankLeftImgUrl from './static/images/tank/left.gif'
 import tankRightImgUrl from './static/images/tank/right.gif'
 import bulletImgUrl from './static/images/bullet/bullet.jpg'
+import bossImgUrl from './static/images/boss/boss.png'
 
 export default {
   tankMoveTime: 50,
@@ -47,5 +48,6 @@ export default {
     tankLeft: tankLeftImgUrl,
     tankRight: tankRightImgUrl,
     bullet: bulletImgUrl,
+    boss: bossImgUrl,
   },
 }
