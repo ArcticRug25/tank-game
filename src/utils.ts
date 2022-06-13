@@ -1,3 +1,4 @@
+import boss from './canvas/boss'
 import steel from './canvas/steel'
 import wall from './canvas/wall'
 import config from './config'
@@ -7,7 +8,7 @@ export function isModelTouch(
   y: number,
   width = config.model.width,
   height = config.model.height,
-  untouchableModels = [...wall.models, ...steel.models],
+  untouchableModels = [...wall.models, ...steel.models, ...boss.models],
 ): IModel | undefined {
   return untouchableModels.find((model) => {
     const state

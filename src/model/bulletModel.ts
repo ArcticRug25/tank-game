@@ -1,4 +1,7 @@
+import boss from '../canvas/boss'
 import bullet from '../canvas/bullet'
+import steel from '../canvas/steel'
+import wall from '../canvas/wall'
 import config from '../config'
 import { image } from '../service/image'
 import { directionEnum } from '../types/directionEnum'
@@ -32,7 +35,7 @@ export default class bulletModel extends ModelAbstract implements IModel {
         break
     }
     // 碰撞检测
-    const touchModel = isModelTouch(x, y, config.bullet.width, config.bullet.height)
+    const touchModel = isModelTouch(x, y, config.bullet.width, config.bullet.height, [...wall.models, ...steel.models, ...boss.models])
     if (isCanvasTouch(x, y, config.bullet.width, config.bullet.height)) {
       this.destroy()
     }
