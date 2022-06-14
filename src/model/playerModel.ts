@@ -31,20 +31,29 @@ export default class PlayerModel extends ModelAbstract implements IModel {
   }
 
   changeDirection(e: KeyboardEvent) {
+    let x = this.x
+    let y = this.y
     switch (e.code) {
       case 'ArrowUp':
         this.direction = directionEnum.TOP
+        y -= 5
         break
       case 'ArrowDown':
         this.direction = directionEnum.BOTTOM
+        y += 5
         break
       case 'ArrowLeft':
         this.direction = directionEnum.LEFT
+        x -= 5
         break
       case 'ArrowRight':
         this.direction = directionEnum.RIGHT
+        x += 5
         break
     }
+    this.x = x
+    this.y = y
+    this.canvas.clearRect()
     this.canvas.renderModels()
   }
 }

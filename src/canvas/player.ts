@@ -24,4 +24,4 @@ export default new class Player extends CanvasAbstract implements ICanvas {
       this.models.push(instance)
     })
   }
-}('boss')
+}('player')
