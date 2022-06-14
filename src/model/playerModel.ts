@@ -2,6 +2,7 @@ import _ from 'lodash'
 import player from '../canvas/player'
 import { image } from '../service/image'
 import { directionEnum } from '../types/directionEnum'
+import { isCanvasTouch, isModelTouch } from '../utils'
 import ModelAbstract from './modelAbstract'
 
 export default class PlayerModel extends ModelAbstract implements IModel {
@@ -51,6 +52,10 @@ export default class PlayerModel extends ModelAbstract implements IModel {
         x += 5
         break
     }
+    this.canvas.renderModels()
+    if (isCanvasTouch(x, y) || isModelTouch(x, y))
+      return
+
     this.x = x
     this.y = y
     this.canvas.clearRect()
