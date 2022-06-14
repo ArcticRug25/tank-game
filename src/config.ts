@@ -11,7 +11,7 @@ import bossImgUrl from './static/images/boss/boss.png'
 import palyerTopImgUrl from './static/images/player/top.gif'
 import palyerRightImgUrl from './static/images/player/right.gif'
 import palyerBottomImgUrl from './static/images/player/bottom.gif'
-import palyerLeftImgUrl from './static/images/player/right.gif'
+import palyerLeftImgUrl from './static/images/player/left.gif'
 
 export default {
   tankMoveTime: 50,
