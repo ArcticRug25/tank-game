@@ -28,4 +28,5 @@ interface ICanvas {
   removeModel(model: IModel): void
   renderModels(): void
   clearRect(): void
+  stop?(): void
 }

@@ -16,8 +16,20 @@ app.style.height = `${config.canvas.height}px`
 
 export default {
   isStart: false,
+  state: 9,
+  interval: 0,
   bootstrap() {
-    app.addEventListener('click', this.start.bind(this))
+    app.addEventListener('click', async () => {
+      await this.start()
+      this.interval = setInterval(() => {
+        if (!tank.models.length)
+          this.state = 1
+        if (!player.models.length || !boss.models.length)
+          this.state = 0
+        if (this.state !== 9)
+          this.stop()
+      }, 100)
+    })
   },
   async start() {
     if (this.isStart)
@@ -37,6 +49,8 @@ export default {
     player.render()
   },
   async stop() {
-
+    clearInterval(this.interval)
+    tank.stop()
+    bullet.stop()
   },
 }
