@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import bullet from '../canvas/bullet'
 import player from '../canvas/player'
 import { image } from '../service/image'
 import { directionEnum } from '../types/directionEnum'
@@ -50,6 +51,9 @@ export default class PlayerModel extends ModelAbstract implements IModel {
       case 'ArrowRight':
         this.direction = directionEnum.RIGHT
         x += 5
+        break
+      case 'Space':
+        bullet.addPlayerBullet()
         break
     }
     this.canvas.renderModels()
