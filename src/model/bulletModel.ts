@@ -1,6 +1,8 @@
 import boss from '../canvas/boss'
 import bullet from '../canvas/bullet'
+import player from '../canvas/player'
 import steel from '../canvas/steel'
+import tank from '../canvas/tank'
 import wall from '../canvas/wall'
 import config from '../config'
 import { image } from '../service/image'
@@ -20,26 +22,33 @@ export default class bulletModel extends ModelAbstract implements IModel {
   render(): void {
     let x = this.x
     let y = this.y
+    const step = this.tank.name === 'player' ? 10 : 5
     switch (this.direction) {
       case directionEnum.TOP:
-        y -= 2
+        y -= step
         break
       case directionEnum.RIGHT:
-        x += 2
+        x += step
         break
       case directionEnum.BOTTOM:
-        y += 2
+        y += step
         break
       case directionEnum.LEFT:
-        x -= 2
+        x -= step
         break
     }
     // 碰撞检测
-    const touchModel = isModelTouch(x, y, config.bullet.width, config.bullet.height, [...wall.models, ...steel.models, ...boss.models])
+    const touchModel = isModelTouch(
+      x,
+      y,
+      config.bullet.width,
+      config.bullet.height,
+      [...wall.models, ...steel.models, ...boss.models, ...tank.models, ...player.models],
+    )
     if (isCanvasTouch(x, y, config.bullet.width, config.bullet.height)) {
       this.destroy()
     }
-    else if (touchModel) {
+    else if (touchModel && touchModel.name !== this.tank.name) {
       this.destroy()
       if (touchModel.name !== 'steel')
         touchModel.destroy()
