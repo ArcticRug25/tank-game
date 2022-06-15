@@ -1,4 +1,5 @@
 import config from '../config'
+import audio from '../service/audio'
 
 export default abstract class ModelAbstract {
   public abstract name: string
@@ -24,6 +25,7 @@ export default abstract class ModelAbstract {
   }
 
   protected blast(model: IModel) {
+    audio.blast()
     Array(...Array(8).keys()).reduce((promise, val) => {
       return new Promise((resolve) => {
         setTimeout(() => {

@@ -1,5 +1,6 @@
 import config from '../config'
 import BulletModel from '../model/bulletModel'
+import audio from '../service/audio'
 import CanvasAbstract from './canvasAbstract'
 import player from './player'
 import tank from './tank'
@@ -36,6 +37,7 @@ export default new class Bullet extends CanvasAbstract implements ICanvas {
 
   addPlayerBullet() {
     this.models.push(new BulletModel(player.models[0]))
+    audio.fire()
   }
 
   public stop() {
