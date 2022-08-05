@@ -14,7 +14,7 @@ import palyerBottomImgUrl from './static/images/player/bottom.gif'
 import palyerLeftImgUrl from './static/images/player/left.gif'
 
 export default {
-  tankMoveTime: 50,
+  tankMoveTime: 40,
   canvas: {
     width: 900,
     height: 600,
